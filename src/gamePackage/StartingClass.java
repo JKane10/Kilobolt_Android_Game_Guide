@@ -16,13 +16,14 @@ import gamePackage.framework.Animation;
 
 public class StartingClass extends Applet implements Runnable, KeyListener {
 
-	private Robot robot;
+	private static Robot robot;
 	private Heliboy hb, hb2;
 	private Image image, currentSprite, character, character2, character3,
 			characterDown, characterJumped, background, heliboy, heliboy2,
 			heliboy3, heliboy4, heliboy5;
 
-	public static Image tilegrassTop, tilegrassBot, tilegrassLeft, tilegrassRight, tiledirt;
+	public static Image tilegrassTop, tilegrassBot, tilegrassLeft,
+			tilegrassRight, tiledirt;
 
 	private Graphics second;
 	private URL base;
@@ -68,7 +69,6 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
 		tilegrassLeft = getImage(base, "data/tilegrassleft.png");
 		tilegrassRight = getImage(base, "data/tilegrassright.png");
 
-
 		anim = new Animation();
 		anim.addFrame(character, 1250);
 		anim.addFrame(character2, 50);
@@ -92,6 +92,7 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
 	public void start() {
 		bg1 = new Background(0, 0);
 		bg2 = new Background(2160, 0);
+		robot = new Robot();
 
 		// Initialize Tiles
 		try {
@@ -103,7 +104,6 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
 
 		hb = new Heliboy(340, 360);
 		hb2 = new Heliboy(700, 360);
-		robot = new Robot();
 
 		Thread thread = new Thread(this);
 		thread.start();
@@ -282,6 +282,7 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
 		case KeyEvent.VK_CONTROL:
 			if (robot.isDucked() == false && robot.isJumped() == false) {
 				robot.shoot();
+				robot.setReadyToFire(false);
 			}
 			break;
 
@@ -312,6 +313,10 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
 		case KeyEvent.VK_SPACE:
 			break;
 
+		case KeyEvent.VK_CONTROL:
+			robot.setReadyToFire(true);
+			break;
+
 		}
 
 	}
@@ -330,4 +335,8 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
 		return bg2;
 	}
 
+	public static Robot getRobot(){
+		return robot;
+	}
+	
 }
