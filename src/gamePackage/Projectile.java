@@ -2,10 +2,10 @@ package gamePackage;
 
 public class Projectile {
 
-	private int x,y, speedX;
+	private int x, y, speedX;
 	private boolean visible;
 	
-	public Projectile(int startX, int startY) {
+	public Projectile(int startX, int startY){
 		x = startX;
 		y = startY;
 		speedX = 7;
@@ -13,10 +13,11 @@ public class Projectile {
 	}
 	
 	public void update(){
-		x+= speedX;
-		if (x> 800){
+		x += speedX;
+		if (x > 800){
 			visible = false;
 		}
+		
 	}
 
 	public int getX() {
@@ -50,5 +51,8 @@ public class Projectile {
 	public void setVisible(boolean visible) {
 		this.visible = visible;
 	}
-
+	
+	
+	
+	
 }

@@ -1,20 +1,21 @@
 package gamePackage;
 
+
 public class Background {
-private int bgX, bgY, speedX;
-
-
+	
+	private int bgX, bgY, speedX;
+	
 	public Background(int x, int y){
-		bgX= x;
+		bgX = x;
 		bgY = y;
 		speedX = 0;
 	}
 	
-	public void update(){
+	public void update() {
 		bgX += speedX;
-		
+
 		if (bgX <= -2160){
-			bgX+=4320;
+			bgX += 4320;
 		}
 	}
 
@@ -41,5 +42,8 @@ private int bgX, bgY, speedX;
 	public void setSpeedX(int speedX) {
 		this.speedX = speedX;
 	}
+
+	
+	
 	
 }

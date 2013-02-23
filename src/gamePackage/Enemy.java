@@ -1,21 +1,23 @@
 package gamePackage;
 
 public class Enemy {
-	
+
 	private int maxHealth, currentHealth, power, speedX, centerX, centerY;
 	private Background bg = StartingClass.getBg1();
-	
-	public void update(){
+
+	// Behavioral Methods
+	public void update() {
 		centerX += speedX;
-		speedX = bg.getSpeedX();
+		speedX = bg.getSpeedX()*5;
+
 	}
-	
-	public void die(){
-		
+
+	public void die() {
+
 	}
-	
-	public void attack(){
-		
+
+	public void attack() {
+
 	}
 
 	public int getMaxHealth() {
@@ -74,4 +76,5 @@ public class Enemy {
 		this.bg = bg;
 	}
 
+	
 }
